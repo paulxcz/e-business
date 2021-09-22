@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
@@ -42,19 +41,20 @@
 								<h:outputText value="#{e.idEmprendedor}" />
 							</p:column>
 
-							<p:column headerText="Nombre"
-								sortBy="#{e.nombreEmprendedor}">
+							<p:column headerText="Nombre" sortBy="#{e.nombreEmprendedor}">
 								<h:outputText value="#{e.nombreEmprendedor}" />
 							</p:column>
-							<p:column headerText="Empresa"
-								sortBy="#{e.nombreEmpresa}">
+							<p:column headerText="Empresa" sortBy="#{e.nombreEmpresa}">
 								<h:outputText value="#{e.nombreEmpresa}" />
 							</p:column>
-							<p:column headerText="Giro del Negocio"
-								sortBy="#{e.giroNegocio}">
+							<p:column headerText="Giro del Negocio" sortBy="#{e.giroNegocio}">
 								<h:outputText value="#{e.giroNegocio}" />
 							</p:column>
 
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink action="listPowner" value="Eliminar"
+									actionListener="#{emprendedorController.eliminar(e)}" />
+							</p:column>
 						</p:dataTable>
 					</div>
 

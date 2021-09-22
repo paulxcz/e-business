@@ -17,7 +17,7 @@ public class EmprendedorController {
 	// CDI
 	@Inject
 	private IEmprendedorService eService;
-
+	
 	// Atributos
 	private Emprendedor emprendedor;
 
@@ -31,7 +31,6 @@ public class EmprendedorController {
 		this.list();
 	}
 	// métodos atender peticiones
-
 	public String newEmprendedor() {
 		this.setEmprendedor(new Emprendedor());
 		return "Emprendedor.xhtml";
@@ -46,9 +45,20 @@ public class EmprendedorController {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	public void eliminar(Emprendedor em) {
+		try {
+			eService.eliminar(em.getIdEmprendedor());
+			list();
+		} catch(Exception e){
+			e.getMessage();
+		}
+	}
 	public void list() {
+		try {
 		listaEmprendedores = eService.list();
+		}catch(Exception e) {
+			e.getMessage();
+		}
 	}
 
 	// Getters and Setters

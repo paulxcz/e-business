@@ -49,4 +49,17 @@ public class EmprendedorImpl implements IEmprendedorDao{
 		
 		return lista;
 	}
+
+	@SuppressWarnings("unused")
+	@Transactional
+	@Override
+	public void eliminar(int idEmprendedor) {
+		Emprendedor med = new Emprendedor();
+		try {
+			med = em.getReference(Emprendedor.class, idEmprendedor);
+			em.remove(med);
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }
