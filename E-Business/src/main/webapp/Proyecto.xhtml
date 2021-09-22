@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Proyecto:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Proyecto</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idProyecto" value="Id "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idProyecto"
+				styleClass="form-control"
+				value="#{proyectoController.proyecto.idProyecto}" required="true" />
+
+			<h:outputLabel for="NombreProyecto" value="Nombre del Proyecto "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="nombreProyecto"
+				styleClass="form-control"
+				value="#{proyectoController.proyecto.nombreProyecto}" maxlength="15"
+				required="true" />
+
+
+			<h:outputLabel for="Anuncio" value="Anuncio"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="anuncioProyecto"
+				styleClass="form-control"
+				value="#{proyectoController.proyecto.anuncioProyecto}"
+				maxlength="15" required="true" />
+
+
+			<h:outputLabel for="Emprendedor" value="Emprendedor "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="Emprendedor"
+				styleClass="form-control" value="#{proyectoController.proyecto.em}"
+				maxlength="10" required="true">
+			</p:inputText>
+
+			<h:outputLabel for="fechaFinalizacion" value="Fecha de Finalizacion "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="fechaFinalizacion"
+				styleClass="form-control"
+				value="#{proyectoController.proyecto.fechaFinalizacion}"
+				maxlength="100" required="true">
+			</p:inputText>
+
+			<h:outputLabel for="descripcion" value="Descripcion del Proyecto"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="descripcion"
+				styleClass="form-control"
+				value="#{proyectoController.proyecto.descripcion}" maxlength="100"
+				required="true">
+			</p:inputText>
+			
+			<h:outputLabel for="estado" value="Estado"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="estado"
+				styleClass="form-control"
+				value="#{proyectoController.proyecto.estado}" maxlength="100"
+				required="true">
+			</p:inputText>
+
+			<br />
+			<p:commandButton value="Grabar"
+				actionListener="#{mercadologoController.insertMercadologo()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listMercadologo?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listMercadologo?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+
+
+
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

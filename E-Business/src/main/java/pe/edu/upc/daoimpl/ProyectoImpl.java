@@ -1,4 +1,5 @@
 package pe.edu.upc.daoimpl;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,17 +8,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.IEmprendedorDao;
-import pe.edu.upc.entities.Emprendedor;
+import pe.edu.upc.dao.IProyectoDao;
+import pe.edu.upc.entities.Proyecto;
 
-public class EmprendedorImpl implements IEmprendedorDao{
-
+public class ProyectoImpl implements IProyectoDao {
 	@PersistenceContext(unitName = "e-business")
 	private EntityManager em;
 	
 	@Transactional
 	@Override
-	public void insert(Emprendedor vc) {
+	public void insert(Proyecto vc) {
 		// TODO Auto-generated method stub
 		try {
 			
@@ -32,14 +32,14 @@ public class EmprendedorImpl implements IEmprendedorDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Emprendedor> list() {
+	public List<Proyecto> list() {
 		// TODO Auto-generated method stub
-		List<Emprendedor> lista = new ArrayList<Emprendedor>();
+		List<Proyecto> lista = new ArrayList<Proyecto>();
 		
 		try {
 			
-			Query q = em.createQuery("select v from Emprendedor v");
-			lista = (List<Emprendedor>) q.getResultList();
+			Query q = em.createQuery("select v from Proyecto v");
+			lista = (List<Proyecto>) q.getResultList();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -52,10 +52,10 @@ public class EmprendedorImpl implements IEmprendedorDao{
 
 	@Transactional
 	@Override
-	public void eliminar(int idEmprendedor) {
-		Emprendedor med = new Emprendedor();
+	public void eliminar(int idProyecto) {
+		Proyecto med = new Proyecto();
 		try {
-			med = em.getReference(Emprendedor.class, idEmprendedor);
+			med = em.getReference(Proyecto.class, idProyecto);
 			em.remove(med);
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
