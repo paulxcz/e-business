@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
+
+
+	<ui:define name="title">
+        .:Listado de Soportes:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Soportes </span>
+	</ui:define>
+
+	<ui:define name="content">	
+
+		<h:form>
+			<div class="row"> <p:commandButton value="Nuevo"
+				action="#{soporteController.newSoporte()}"
+				styleClass="btn btn-primary" ajax="false" /> </div>
+
+			<div class="row"> <div class="col-sm-12"> <div
+				class="form-group table-responsive box-table-class"> <p:dataTable
+				id="lstSoporte" var="e"
+				value="#{SoporteController.listaSoportes}" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+				rows="10" styleClass="table table-bordered"
+				emptyMessage="No existen registros" rowIndexVar="item"
+				style="margin-bottom:0">
+
+				<p:column headerText="Id" sortBy="#{e.idSoporte}">
+					<h:outputText value="#{e.idSoporte}" />
+				</p:column>
+
+				<p:column headerText="Problema" sortBy="#{e.descripcionProblema}">
+					<h:outputText value="#{e.nombreEmpresa}" />
+				</p:column>
+				<p:column headerText="Operación" exportable="false">
+					<h:commandLink action="listPowner" value="Eliminar"
+						actionListener="#{soporteController.eliminar(med)}" />
+				</p:column>
+
+			</p:dataTable> </div> </div> </div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>
