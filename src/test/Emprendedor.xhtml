@@ -39,15 +39,8 @@
 			<p:inputText autocomplete="off" id="nombreEmpresa"
 				styleClass="form-control"
 				value="#{emprendedorController.emprendedor.nombreEmpresa}"
-				maxlength="40" required="true" />
-			
-			<h:outputLabel for="giroNegocio" value="Giro del Negocio "
-				styleClass="control-label" />
-			<p:inputText autocomplete="off" id="giroNegocio"
-				styleClass="form-control"
-				value="#{emprendedorController.emprendedor.giroNegocio}"
 				maxlength="40" required="true">
-			
+
 			</p:inputText>
 			<br />
 			<p:commandButton value="Grabar"
@@ -57,9 +50,6 @@
 			<p:commandButton value="Cancelar"
 				action="listEmprendedor?faces-redirect=true" immediate="true"
 				styleClass="btn btn-default" ajax="false" />
-
-
-
 		</h:form>
 	</ui:define>
 

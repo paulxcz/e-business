@@ -18,8 +18,8 @@ public class Mercadologo {
 	@Column(name = "nombreMercadologo", length = 45, nullable = false)
 	private String nombreMercadologo;
 	
-	@Column(name = "numeroMercadologo", length = 45, nullable = false)
-	private String numeroMercadologo;
+	@Column(name = "numeroMercadologo", nullable = false)
+	private int numeroMercadologo;
 	
 	@Column(name = "ratingMercadologo", nullable = false)
 	private int ratingMercadologo;
@@ -37,7 +37,7 @@ public class Mercadologo {
 	}
 
 	//constructor con parametros
-	public Mercadologo(int idMercadologo, String nombreMercadologo, String numeroMercadologo, int ratingMercadologo,
+	public Mercadologo(int idMercadologo, String nombreMercadologo, int numeroMercadologo, int ratingMercadologo,
 			String correoMercadologo, String linkedinMercadologo) {
 		super();
 		this.idMercadologo = idMercadologo;
@@ -65,11 +65,11 @@ public class Mercadologo {
 		this.nombreMercadologo = nombreMercadologo;
 	}
 
-	public String getNumeroMercadologo() {
+	public int getNumeroMercadologo() {
 		return numeroMercadologo;
 	}
 
-	public void setNumeroMercadologo(String numeroMercadologo) {
+	public void setNumeroMercadologo(int numeroMercadologo) {
 		this.numeroMercadologo = numeroMercadologo;
 	}
 
@@ -96,10 +96,5 @@ public class Mercadologo {
 	public void setLinkedinMercadologo(String linkedinMercadologo) {
 		this.linkedinMercadologo = linkedinMercadologo;
 	}
-	
-	
-
-	
-	
 	
 }

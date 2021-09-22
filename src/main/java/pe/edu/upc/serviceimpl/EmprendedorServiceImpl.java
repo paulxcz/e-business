@@ -24,6 +24,9 @@ public class EmprendedorServiceImpl implements IEmprendedorService{
 
 	}
 	
+	public void eliminar(int idEmprendedor) {
+		vDao.eliminar(idEmprendedor);
+	}
 	@Override
 	public List<Emprendedor> list() {
 		// TODO Auto-generated method stub

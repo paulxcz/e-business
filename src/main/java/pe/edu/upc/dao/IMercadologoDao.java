@@ -1,11 +1,10 @@
-package pe.edu.upc.service;
+package pe.edu.upc.dao;
 
 import java.util.List;
 
 import pe.edu.upc.entities.Mercadologo;
 
-public interface IMercadologoService {
+public interface IMercadologoDao {
 	public void insert(Mercadologo vc);
-
 	public List<Mercadologo> list();
 }

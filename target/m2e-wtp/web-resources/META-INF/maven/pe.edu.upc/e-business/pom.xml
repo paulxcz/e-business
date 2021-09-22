@@ -7,7 +7,7 @@
   <name>e-business</name>
   <description>e-business webpage</description>
   <build>
-		<finalName>demoApp</finalName>
+		<finalName>e-business</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

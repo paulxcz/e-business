@@ -7,6 +7,8 @@ import pe.edu.upc.entities.Emprendedor;
 public interface IEmprendedorService {
 
 	public void insert(Emprendedor vc);
+	
+	public void eliminar(int idEmprendedor);
 
 	public List<Emprendedor> list();
 }

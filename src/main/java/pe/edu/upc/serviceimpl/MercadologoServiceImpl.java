@@ -3,10 +3,10 @@ package pe.edu.upc.serviceimpl;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
+
 import javax.inject.Named;
 
-import pe.edu.upc.dao.IMercardologoDao;
+import pe.edu.upc.dao.IMercadologoDao;
 import pe.edu.upc.entities.Mercadologo;
 import pe.edu.upc.service.IMercadologoService;
 
@@ -14,18 +14,19 @@ import pe.edu.upc.service.IMercadologoService;
 @RequestScoped
 public class MercadologoServiceImpl implements IMercadologoService{
 
-	@Inject
-	private IMercardologoDao mDao;
+	private IMercadologoDao vDao;
 	
 	@Override
-	public void insert(Mercadologo m) {
-		mDao.insert(m);
+	public void insert(Mercadologo vc) {
+		// TODO Auto-generated method stub
+		vDao.insert(vc);
+
 	}
 	
 	@Override
-	public List<Mercadologo> list(){
-		return mDao.list();
+	public List<Mercadologo> list() {
+		// TODO Auto-generated method stub
+		return vDao.list();
 	}
-	
-	
+
 }
