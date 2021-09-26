@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="e-business"
 		transaction-type="JTA">
-		<jta-data-source>java:/e-businessBD</jta-data-source>
+		<jta-data-source>java:/PostgresDS</jta-data-source>
 		<class>pe.edu.upc.entities.Emprendedor</class>
 		<class>pe.edu.upc.entities.Mercadologo</class>
 		<class>pe.edu.upc.entities.Soporte</class>
