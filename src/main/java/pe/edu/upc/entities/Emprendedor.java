@@ -9,20 +9,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Emprendedor")
-
 public class Emprendedor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private int idEmprendedor;
 	
 	@Column(name = "nombreEmprendedor", length = 50, nullable = false)
-	
 	private String nombreEmprendedor;
-
 	@Column(name = "nombreEmpresa", length = 50, nullable=false)
 	private String nombreEmpresa;
-	
 	@Column(name = "giroNegocio", length = 70, nullable=false)
 	private String giroNegocio;
 

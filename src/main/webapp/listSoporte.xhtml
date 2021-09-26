@@ -8,45 +8,46 @@
 
 
 	<ui:define name="title">
-        .:Listado de Emprendedores:.
+        .:Listado de Soportes:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Emprendedores </span>
+		<span>Soportes </span>
 	</ui:define>
 
 	<ui:define name="content">	
 
 		<h:form>
 			<div class="row"> <p:commandButton value="Nuevo"
-				action="#{emprendedorController.newEmprendedor()}"
+				action="#{soporteController.newSoporte()}"
 				styleClass="btn btn-primary" ajax="false" /> </div>
 
 			<div class="row"> <div class="col-sm-12"> <div
 				class="form-group table-responsive box-table-class"> <p:dataTable
-				id="lstEmprendedor" var="e"
-				value="#{emprendedorController.listaEmprendedores}" paginator="true"
+				id="lstSoporte" var="e"
+				value="#{SoporteController.listaSoportes}" paginator="true"
 				paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 				rows="10" styleClass="table table-bordered"
 				emptyMessage="No existen registros" rowIndexVar="item"
 				style="margin-bottom:0">
 
-				<p:column headerText="Id" sortBy="#{e.idEmprendedor}">
-					<h:outputText value="#{e.idEmprendedor}" />
+				<p:column headerText="Id" sortBy="#{e.idSoporte}">
+					<h:outputText value="#{e.idSoporte}" />
+				</p:column>
+				
+				
+				<p:column headerText="Nombre" sortBy="#{e.nombreSoporte}">
+					<h:outputText value="#{e.nombreSoporte}" />
 				</p:column>
 
-				<p:column headerText="Nombre" sortBy="#{e.nombreEmprendedor}">
-					<h:outputText value="#{e.nombreEmprendedor}" />
+				<p:column headerText="Problema" sortBy="#{e.descripcionProblema}">
+					<h:outputText value="#{e.descripcionProblema}" />
 				</p:column>
-				<p:column headerText="Empresa" sortBy="#{e.nombreEmpresa}">
-					<h:outputText value="#{e.nombreEmpresa}" />
-				</p:column>
-				<p:column headerText="Giro del Negocio" sortBy="#{e.giroNegocio}">
-					<h:outputText value="#{e.giroNegocio}" />
-				</p:column>
+				
+				
 				<p:column headerText="Operación" exportable="false">
 					<h:commandLink action="listPowner" value="Eliminar"
-						actionListener="#{emprendedorController.eliminar(e)}" />
+						actionListener="#{soporteController.eliminar(e)}" />
 				</p:column>
 
 			</p:dataTable> </div> </div> </div>

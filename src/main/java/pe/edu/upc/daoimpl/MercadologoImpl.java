@@ -5,11 +5,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
-import pe.edu.upc.entities.Mercadologo;
 import pe.edu.upc.dao.IMercadologoDao;
+import pe.edu.upc.entities.Mercadologo;
 
 
 public class MercadologoImpl implements IMercadologoDao {
@@ -45,5 +45,31 @@ public class MercadologoImpl implements IMercadologoDao {
 		}
 		return lista;
 	}
+	
+	
+	public void eliminar(int idMercadologo) {
+		Mercadologo med = new Mercadologo();
+		try {
+			med = em.getReference(Mercadologo.class, idMercadologo);
+			em.remove(med);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Mercadologo> finByNameMercadologo(Mercadologo mer) {
+		List<Mercadologo> lista = new ArrayList<Mercadologo>();
+		try {
+			Query q = em.createQuery("from Mercadologo m where m.nameMercadologo like ?1");
+			q.setParameter(1, "%" + mer.getNombreMercadologo() + "%");
+			lista = (List<Mercadologo>) q.getResultList();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return lista;
+	}
+
 	
 }

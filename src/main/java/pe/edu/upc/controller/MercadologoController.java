@@ -3,7 +3,9 @@ package pe.edu.upc.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.Mercadologo;
@@ -12,17 +14,15 @@ import pe.edu.upc.service.IMercadologoService;
 @Named
 @RequestScoped
 public class MercadologoController {
-
+	@Inject
 	//traer metodos
 	private IMercadologoService mService;
-	
-	
 	//atributos
 	private Mercadologo mercadologo;
 	List<Mercadologo> listaMercadologo;
 	
 	//Constructor
-
+	@PostConstruct
 	public void init() {
 		this.listaMercadologo = new ArrayList<Mercadologo>();
 		this.mercadologo = new Mercadologo();
@@ -46,9 +46,36 @@ public class MercadologoController {
 		
 	}
 	
+	public void eliminar(Mercadologo mercadologo) {
+		try {
+			mService.eliminar(mercadologo.getIdMercadologo());
+			listMercadologo();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	
+	
 	public void listMercadologo() {
 		listaMercadologo = mService.list();
 		
+	}
+	
+	public void clean() {
+		this.init();
+	}
+	
+	public void findByName() {
+		try {
+			if (mercadologo.getNombreMercadologo().isEmpty()) {
+				this.listMercadologo();
+			} else {
+
+				listaMercadologo = this.mService.findByNameMercadologo(this.getMercadologo());
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
 	}
 
 	//GET Y SET

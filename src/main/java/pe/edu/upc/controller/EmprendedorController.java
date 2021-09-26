@@ -17,10 +17,8 @@ public class EmprendedorController {
 	// CDI
 	@Inject
 	private IEmprendedorService eService;
-	
 	// Atributos
 	private Emprendedor emprendedor;
-
 	List<Emprendedor> listaEmprendedores;
 
 	// Constructor
@@ -31,6 +29,7 @@ public class EmprendedorController {
 		this.list();
 	}
 	// métodos atender peticiones
+
 	public String newEmprendedor() {
 		this.setEmprendedor(new Emprendedor());
 		return "Emprendedor.xhtml";
@@ -45,18 +44,35 @@ public class EmprendedorController {
 			System.out.println(e.getMessage());
 		}
 	}
-	public void eliminar(Emprendedor em) {
+	
+	
+	public void eliminar(Emprendedor emprendedor) {
 		try {
-			eService.eliminar(em.getIdEmprendedor());
+			eService.eliminar(emprendedor.getIdEmprendedor());
 			list();
-		} catch(Exception e){
+		} catch (Exception e) {
 			e.getMessage();
 		}
 	}
+
 	public void list() {
-		try {
 		listaEmprendedores = eService.list();
-		}catch(Exception e) {
+	}
+	
+	public void clean() {
+		this.init();
+	}
+	
+	
+	public void findByName() {
+		try {
+			if (emprendedor.getNombreEmprendedor().isEmpty()) {
+				this.list();
+			} else {
+
+				listaEmprendedores = this.eService.findByNameEmprendedor(this.getEmprendedor());
+			}
+		} catch (Exception e) {
 			e.getMessage();
 		}
 	}

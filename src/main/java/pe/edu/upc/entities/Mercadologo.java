@@ -10,23 +10,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Mercadologo")
 public class Mercadologo {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idMercadologo;
-	
 	@Column(name = "nombreMercadologo", length = 45, nullable = false)
 	private String nombreMercadologo;
-	
 	@Column(name = "numeroMercadologo", nullable = false)
 	private int numeroMercadologo;
-	
 	@Column(name = "ratingMercadologo", nullable = false)
 	private int ratingMercadologo;
-	
 	@Column(name = "correoMercadologo", length = 80, nullable = false)
 	private String correoMercadologo;
-	
 	@Column(name = "linkedinMercadologo", length = 80, nullable = false)
 	private String linkedinMercadologo;
 
