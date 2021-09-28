@@ -15,7 +15,7 @@
 		<span>Soportes </span>
 	</ui:define>
 
-	<ui:define name="content">	
+	<ui:define name="content">
 
 		<h:form>
 			<div class="row"> <p:commandButton value="Nuevo"
@@ -24,23 +24,38 @@
 
 			<div class="row"> <div class="col-sm-12"> <div
 				class="form-group table-responsive box-table-class"> <p:dataTable
-				id="lstSoporte" var="e"
-				value="#{SoporteController.listaSoportes}" paginator="true"
-				paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
-				rows="10" styleClass="table table-bordered"
+				id="lstSoporte" var="s" value="#{soporteController.listaSoportes}"
+				paginator="true" paginatorPosition="top"
+				rowsPerPageTemplate="10,20,30,40,50" rows="10"
+				styleClass="table table-bordered"
 				emptyMessage="No existen registros" rowIndexVar="item"
 				style="margin-bottom:0">
 
-				<p:column headerText="Id" sortBy="#{e.idSoporte}">
-					<h:outputText value="#{e.idSoporte}" />
+				<p:column headerText="Id" sortBy="#{s.idSoporte}">
+					<h:outputText value="#{s.idSoporte}" />
 				</p:column>
 
-				<p:column headerText="Problema" sortBy="#{e.descripcionProblema}">
-					<h:outputText value="#{e.nombreEmpresa}" />
+
+				<p:column headerText="Nombre" sortBy="#{s.nombreSoporte}">
+					<h:outputText value="#{s.nombreSoporte}" />
 				</p:column>
+
+				<p:column headerText="Problema" sortBy="#{s.descripcionProblema}">
+					<h:outputText value="#{s.descripcionProblema}" />
+				</p:column>
+
+
 				<p:column headerText="Operación" exportable="false">
 					<h:commandLink action="listPowner" value="Eliminar"
-						actionListener="#{soporteController.eliminar(med)}" />
+						actionListener="#{soporteController.eliminar(s)}" />
+				</p:column>
+			     
+			     
+			     <p:column headerText="Operación" exportable="false">
+
+					<h:commandLink value="Modificar"
+						action="#{soporteController.Modifpre(s)}"
+						style="color:blue;" />
 				</p:column>
 
 			</p:dataTable> </div> </div> </div>

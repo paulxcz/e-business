@@ -15,7 +15,7 @@
 		<span>Emprendedores </span>
 	</ui:define>
 
-	<ui:define name="content">	
+	<ui:define name="content">
 
 		<h:form>
 			<div class="row"> <p:commandButton value="Nuevo"
@@ -46,7 +46,12 @@
 				</p:column>
 				<p:column headerText="Operación" exportable="false">
 					<h:commandLink action="listPowner" value="Eliminar"
-						actionListener="#{emprendedorController.eliminar(med)}" />
+						actionListener="#{emprendedorController.eliminar(e)}" />
+				</p:column>
+				<p:column headerText="Operación" exportable="false">
+
+					<h:commandLink value="Modificar"
+						action="#{emprendedorController.Modifpre(e)}" style="color:blue;" />
 				</p:column>
 
 			</p:dataTable> </div> </div> </div>

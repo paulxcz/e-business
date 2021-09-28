@@ -13,7 +13,8 @@ public class Soporte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSoporte;
-	
+	@Column(name = "nombreSoporte", length = 50, nullable=false)
+	private String nombreSoporte;
 	@Column(name = "DescripcionProblema", length = 50, nullable=false)
 	private String DescripcionProblema;
 	
@@ -25,10 +26,11 @@ public class Soporte {
 	}
 
 	// constructor con parámetros
-	public Soporte(int idSoporte, String DescripcionProblema) {
+	public Soporte(int idSoporte, String DescripcionProblema, String nombreSoporte) {
 		super();
 		this.idSoporte = idSoporte;
 		this.DescripcionProblema = DescripcionProblema;
+		this.nombreSoporte = nombreSoporte;
 		
 	}
 	
@@ -38,6 +40,14 @@ public class Soporte {
 
 	public void setIdSoporte(int idSoporte) {
 		this.idSoporte = idSoporte;
+	}
+	
+	public String getNombreSoporte() {
+		return nombreSoporte;
+	}
+
+	public void setNombreSoporte(String nombreSoporte) {
+		this.nombreSoporte = nombreSoporte;
 	}
 
 	public String getDescripcionProblema() {

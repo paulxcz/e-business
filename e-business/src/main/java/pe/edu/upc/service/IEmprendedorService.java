@@ -13,4 +13,6 @@ public interface IEmprendedorService {
 	public List<Emprendedor> list();
 	
 	public List<Emprendedor> findByNameEmprendedor(Emprendedor emp);
+	
+	public void modificar(Emprendedor emprendedor);
 }

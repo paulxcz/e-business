@@ -7,8 +7,14 @@ import pe.edu.upc.entities.Soporte;
 
 public interface ISoporteDao {
 
-	public void insert(Soporte vc);
+	public void insert(Soporte sp);
 
 	public List<Soporte> list();
+	
+	public void eliminar(int idSoporte);
+
+	public List<Soporte> findByNameSoporte(Soporte sop);
+	
+	public void modificar(Soporte soporte);
 	
 }

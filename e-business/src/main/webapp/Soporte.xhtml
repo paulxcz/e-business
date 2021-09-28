@@ -3,9 +3,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-
-<ui:composition template="master.xhtml">
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
 
 	<ui:define name="title">
         .:Registro de Soporte:.
@@ -17,30 +16,29 @@
 
 	<ui:define name="content">
 		<h:form>
-			<h:outputLabel for="idSoporte" value="Id "
-				styleClass="control-label" />
+			<h:outputLabel for="idSoporte" value="Id " styleClass="control-label" />
 
 			<p:inputText autocomplete="off" id="idSoporte"
 				styleClass="form-control"
-				value="#{soporteController.soporte.idSoporte}"
-				required="true" />
-			<h:outputLabel for="fullNameSoporte"
-				value="Nombre Soporte " styleClass="control-label" />
+				value="#{soporteController.soporte.idSoporte}" required="true" />
+			<h:outputLabel for="fullNameSoporte" value="Nombre Soporte "
+				styleClass="control-label" />
 
 			<p:inputText autocomplete="off" id="fullNameSoporte"
 				styleClass="form-control"
-				value="#{soporteController.soporte.nombreSoporte}"
-				maxlength="30" required="true" />
+				value="#{soporteController.soporte.nombreSoporte}" maxlength="30"
+				required="true" />
+
+				<h:outputLabel for="descripcionProblema" value="Descripcion del Problema "
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="descripcionProblema"
+					styleClass="form-control"
+					value="#{soporteController.soporte.descripcionProblema}"
+					maxlength="40" required="true" >
 
 
-			<h:outputLabel for="descripcionProblema" value="Problema "
-				styleClass="control-label" />
 
-			<p:inputText autocomplete="off" id="descripcionProblema"
-				styleClass="form-control"
-				value="#{soporteController.soporte.nombreSoporte}"
-				maxlength="40" required="true" />
-			
+
 			</p:inputText>
 			<br />
 			<p:commandButton value="Grabar"
@@ -50,14 +48,10 @@
 			<p:commandButton value="Cancelar"
 				action="listSoporte?faces-redirect=true" immediate="true"
 				styleClass="btn btn-default" ajax="false" />
-
-
-
 		</h:form>
 	</ui:define>
 
 	<ui:define name="footerCont">
 
 	</ui:define>
-</ui:composition>
-</html>
+</ui:composition> </html>

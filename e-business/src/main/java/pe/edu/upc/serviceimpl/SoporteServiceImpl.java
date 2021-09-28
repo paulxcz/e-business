@@ -17,10 +17,15 @@ public class SoporteServiceImpl implements ISoporteService{
 	private ISoporteDao vDao;
 	
 	@Override
-	public void insert(Soporte vc) {
+	public void insert(Soporte sp) {
 		// TODO Auto-generated method stub
-		vDao.insert(vc);
+		vDao.insert(sp);
 
+	}
+	
+	@Override
+	public void eliminar(int idSoporte) {
+		vDao.eliminar(idSoporte);
 	}
 	
 	
@@ -29,5 +34,15 @@ public class SoporteServiceImpl implements ISoporteService{
 		// TODO Auto-generated method stub
 		return vDao.list();
 	}
-
+	
+	@Override
+	public List<Soporte> findByNameSoporte(Soporte sop) {
+		// TODO Auto-generated method stub
+		return vDao.findByNameSoporte(sop);
+	}
+	
+	@Override
+	public void modificar(Soporte soporte) {
+		vDao.modificar(soporte);		
+	}
 }

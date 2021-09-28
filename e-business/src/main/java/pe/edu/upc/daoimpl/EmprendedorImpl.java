@@ -12,6 +12,7 @@ import pe.edu.upc.dao.IEmprendedorDao;
 import pe.edu.upc.entities.Emprendedor;
 
 
+
 public class EmprendedorImpl implements IEmprendedorDao {
 	@PersistenceContext(unitName = "e-business")
 	private EntityManager em;
@@ -76,5 +77,17 @@ public class EmprendedorImpl implements IEmprendedorDao {
 		}
 		return lista;
 	}
+	
+	@Transactional
+	@Override
+	public void modificar(Emprendedor emprendedor) {
+		try {
+			em.merge(emprendedor);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	
 
 }
