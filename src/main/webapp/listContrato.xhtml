@@ -1,76 +1,82 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="master.xhtml">
 
 
 	<ui:define name="title">
-        .:Listado de Emprendedores:.
+        .:Listado de Contratos:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Emprendedores </span>
+		<span>Contratos </span>
 	</ui:define>
 
 	<ui:define name="content">
 
 		<h:form>
+
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="form-group">
 						<h:outputLabel for="name" value="Búsqueda"
 							styleClass="control-label" />
-						<p:inputText autocomplete="off" id="name"
+						<p:inputText autocomplete="off" id="id"
 							styleClass="form-control"
-							value="#{emprendedorController.emprendedor.nombreEmprendedor}"
+							value="#{contratoController.contrato.idContrato}"
 							maxlength="50" />
 					</div>
 				</div>
 				
 				<div class="col-sm-8 text-right">
-				<p:commandButton value="Limpiar" update="lstEmprendedor"
-								actionListener="#{emprendedorController.clean()}"
+				<p:commandButton value="Limpiar" update="lstContrato"
+								actionListener="#{contratoController.clean()}"
 								styleClass="btn btn-default" ajax="false" />
 					<p:commandButton value="Nuevo"
-						action="#{emprendedorController.newEmprendedor()}"
+						action="#{contratoController.newContrato()}"
 						styleClass="btn btn-primary" ajax="false" />
-					<p:commandButton value="Buscar" update="lstEmprendedor"
-					actionListener="#{emprendedorController.findByName()}"
+					<p:commandButton value="Buscar" update="lstContrato"
+					actionListener="#{contratoController.findByName()}"
 					styleClass="btn btn-default btn-border" ajax="true" />
 				</div>
 			</div>	
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
-						<p:dataTable id="lstEmprendedor" var="e"
-							value="#{emprendedorController.listaEmprendedores}"
+						<p:dataTable id="lstContrato" var="con"
+							value="#{contratoController.listaContrato}"
 							paginator="true" paginatorPosition="top"
 							rowsPerPageTemplate="10,20,30,40,50" rows="10"
 							styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Id" sortBy="#{e.idEmprendedor}">
-								<h:outputText value="#{e.idEmprendedor}" />
+							<p:column headerText="Id" sortBy="#{con.idContrato}">
+								<h:outputText value="#{con.idContrato}" />
 							</p:column>
 
-							<p:column headerText="Nombre" sortBy="#{e.nombreEmprendedor}">
-								<h:outputText value="#{e.nombreEmprendedor}" />
+							<p:column headerText="cldContrato" sortBy="#{con.cldContrato}">
+								<h:outputText value="#{con.cldContrato}" />
 							</p:column>
-							<p:column headerText="Empresa" sortBy="#{e.nombreEmpresa}">
-								<h:outputText value="#{e.nombreEmpresa}" />
+							<p:column headerText="culminacion"
+								sortBy="#{con.culminacion}">
+								<h:outputText value="#{con.culminacion}" />
 							</p:column>
-							<p:column headerText="Giro del Negocio" sortBy="#{e.giroNegocio}">
-								<h:outputText value="#{e.giroNegocio}" />
+							<p:column headerText="Especificaciones" sortBy="#{con.especificaciones}">
+								<h:outputText value="#{con.especificaciones}" />
 							</p:column>
-							<p:column headerText="Operación" exportable="false">
-								<h:commandLink action="listPowner" value="Eliminar"
-									actionListener="#{emprendedorController.eliminar(e)}" />
+							<p:column headerText="Estado" sortBy="#{con.estado}">
+								<h:outputText value="#{con.estado}" />
 							</p:column>
-
+							<p:column headerText="Fecha de Creación"
+								sortBy="#{con.dateContrato}">
+								<h:outputText value="#{con.dateContrato}">
+									<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+								</h:outputText>
+							</p:column>
 						</p:dataTable>
 					</div>
 				</div>

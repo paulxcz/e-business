@@ -8,21 +8,21 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.IEmprendedorDao;
-import pe.edu.upc.entities.Emprendedor;
+import pe.edu.upc.dao.ISoporteDao;
+import pe.edu.upc.entities.Soporte;
 
 
-public class EmprendedorImpl implements IEmprendedorDao {
+public class SoporteImpl implements ISoporteDao {
 	@PersistenceContext(unitName = "e-business")
 	private EntityManager em;
 
 	@Transactional
 	@Override
-	public void insert(Emprendedor vc) {
+	public void insert(Soporte sp) {
 		// TODO Auto-generated method stub
 		try {
 
-			em.persist(vc);
+			em.persist(sp);
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -33,14 +33,14 @@ public class EmprendedorImpl implements IEmprendedorDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Emprendedor> list() {
+	public List<Soporte> list() {
 		// TODO Auto-generated method stub
-		List<Emprendedor> lista = new ArrayList<Emprendedor>();
+		List<Soporte> lista = new ArrayList<Soporte>();
 
 		try {
 
-			Query q = em.createQuery("select v from Emprendedor v");
-			lista = (List<Emprendedor>) q.getResultList();
+			Query q = em.createQuery("select s from Soporte s");
+			lista = (List<Soporte>) q.getResultList();
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -50,13 +50,13 @@ public class EmprendedorImpl implements IEmprendedorDao {
 
 		return lista;
 	}
-
+	
 	@Transactional
 	@Override
-	public void eliminar(int idEmprendedor) {
-		Emprendedor med = new Emprendedor();
+	public void eliminar(int idSoporte) {
+		Soporte med = new Soporte();
 		try {
-			med = em.getReference(Emprendedor.class, idEmprendedor);
+			med = em.getReference(Soporte.class, idSoporte);
 			em.remove(med);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -65,16 +65,20 @@ public class EmprendedorImpl implements IEmprendedorDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Emprendedor> findByNameEmprendedor(Emprendedor emp) {
-		List<Emprendedor> lista = new ArrayList<Emprendedor>();
+	public List<Soporte> findByNameSoporte(Soporte sop) {
+		List<Soporte> lista = new ArrayList<Soporte>();
 		try {
-			Query q = em.createQuery("from Emprendedor v where v.nombreEmprendedor like ?1");
-			q.setParameter(1, "%" + emp.getNombreEmprendedor() + "%");
-			lista = (List<Emprendedor>) q.getResultList();
+			Query q = em.createQuery("from Soporte s where s.nombreSoporte like ?1");
+			q.setParameter(1, "%" + sop.getNombreSoporte() + "%");
+			lista = (List<Soporte>) q.getResultList();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return lista;
 	}
-
+	
+	
+	
+	
+	
 }
