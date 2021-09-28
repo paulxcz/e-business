@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Contratos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Contratos</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idContrato" value="Id "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idContrato"
+				styleClass="form-control"
+				value="#{contratoController.contrato.idContrato}" required="true" />
+			<h:outputLabel for="cldContrato" value="cldContrato "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="cldContrato"
+				styleClass="form-control"
+				value="#{contratoController.contrato.cldContrato}"
+				required="true" />
+			<br />
+			<h:outputLabel for="culminacion" value="Culminacion "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="culminacion"
+				styleClass="form-control"
+				value="#{contratoController.contrato.culminacion}"
+				maxlength="60" required="true" />
+			<br />
+			<h:outputLabel for="especificaciones" value="Especificaciones "
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="especificaciones"
+				styleClass="form-control"
+				value="#{contratoController.contrato.especificaciones}"
+				maxlength="160" required="true" />
+				
+			<h:outputLabel for="estado" value="estado "
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="estado"
+				styleClass="form-control"
+				value="#{contratoController.contrato.estado}"
+				maxlength="90" required="true" />
+				
+			<h:outputLabel for="dateContrato" value="Fecha de Contrato "
+				styleClass="control-label" />
+
+			<p:calendar id="dateContrato" pattern="dd/MM/yyyy"
+				value="#{contratoController.contrato.dateContrato}"
+				showOn="button" timeZone="UTC" required="true">
+			</p:calendar>
+
+
+			<br />
+			<p:commandButton value="Grabar"
+				actionListener="#{contratoController.insertContrato()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listContrato?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listContrato?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>

@@ -20,12 +20,30 @@
 	<ui:define name="content">
 
 		<h:form>
-			<div class="row">
-				<p:commandButton value="Nuevo"
-					action="#{mercadologoController.newMercadologo()}"
-					styleClass="btn btn-primary" ajax="false" />
-			</div>
-
+					<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<h:outputLabel for="name" value="Búsqueda"
+							styleClass="control-label" />
+						<p:inputText autocomplete="off" id="name"
+							styleClass="form-control"
+							value="#{mercadologoController.mercadologo.nombreMercadologo}"
+							maxlength="45" />
+					</div>
+				</div>
+				
+				<div class="col-sm-8 text-right">
+				<p:commandButton value="Limpiar" update="lstMercadologo"
+								actionListener="#{mercadologoController.clean()}"
+								styleClass="btn btn-default" ajax="false" />
+					<p:commandButton value="Nuevo"
+						action="#{mercadologoController.newMercadologo()}"
+						styleClass="btn btn-primary" ajax="false" />
+					<p:commandButton value="Buscar" update="lstMercadologo"
+					actionListener="#{mercadologoController.findByName()}"
+					styleClass="btn btn-default btn-border" ajax="true" />
+				</div>
+			</div>	
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
@@ -46,6 +64,10 @@
 								sortBy="#{m.nombreMercadologo}">
 								<h:outputText value="#{m.nombreMercadologo}" />
 							</p:column>
+							<p:column headerText="Numero"
+								sortBy="#{m.numeroMercadologo}">
+								<h:outputText value="#{m.numeroMercadologo}" />
+							</p:column>
 							<p:column headerText="Rating"
 								sortBy="#{m.ratingMercadologo}">
 								<h:outputText value="#{m.ratingMercadologo}" />
@@ -59,6 +81,10 @@
 								<h:outputText value="#{m.linkedinMercadologo}" />
 							</p:column>
 
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink action="listPowner" value="Eliminar"
+									actionListener="#{mercadologoController.eliminar(m)}" />
+							</p:column>
 						</p:dataTable>
 					</div>
 
