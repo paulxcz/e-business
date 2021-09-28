@@ -1,5 +1,6 @@
 package pe.edu.upc.controller;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,13 +15,13 @@ import pe.edu.upc.service.IEmprendedorService;
 @Named
 @RequestScoped
 public class EmprendedorController {
+	
+	//private static final long serialVersionUID = 1L;
 	// CDI
 	@Inject
 	private IEmprendedorService eService;
-
 	// Atributos
 	private Emprendedor emprendedor;
-
 	List<Emprendedor> listaEmprendedores;
 
 	// Constructor
@@ -46,10 +47,53 @@ public class EmprendedorController {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	public void eliminar(Emprendedor emprendedor) {
+		try {
+			eService.eliminar(emprendedor.getIdEmprendedor());
+			list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
 
 	public void list() {
 		listaEmprendedores = eService.list();
 	}
+	
+	public void clean() {
+		this.init();
+	}
+	
+	
+	public void findByName() {
+		try {
+			if (emprendedor.getNombreEmprendedor().isEmpty()) {
+				this.list();
+			} else {
+				listaEmprendedores = this.eService.findByNameEmprendedor(this.getEmprendedor());
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	
+	// modificar
+		public void modificar() {
+			try {
+				eService.modificar(this.emprendedor);
+				this.list();
+
+			} catch (Exception e) {
+				e.getMessage();
+			}
+		}
+
+		public String Modifpre(Emprendedor emp) {
+			this.setEmprendedor(emp);
+			return "EmprendedorMod.xhtml";
+
+		}
 
 	// Getters and Setters
 	public Emprendedor getEmprendedor() {

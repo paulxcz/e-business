@@ -14,17 +14,15 @@ import pe.edu.upc.service.IMercadologoService;
 @Named
 @RequestScoped
 public class MercadologoController {
-
-	//traer metodos
 	@Inject
+	//traer metodos
 	private IMercadologoService mService;
 	
 	
 	//atributos
+	private Mercadologo mercadologo;
 	List<Mercadologo> listaMercadologo;
 	
-	private Mercadologo mercadologo;
-
 	//Constructor
 	@PostConstruct
 	public void init() {
@@ -38,9 +36,23 @@ public class MercadologoController {
 		this.setMercadologo(new Mercadologo());
 		return "Mercadologo.xhtml";
 	}
-	
+	public void eliminar(Mercadologo m) {
+		try {
+			mService.eliminar(m.getIdMercadologo());
+			listMercadologo();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.getMessage();
+		}
+	}
 	public void insertMercadologo() {
-		mService.insert(mercadologo);
+		try {
+			mService.insert(mercadologo);
+			this.listMercadologo();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
 		
 	}
 	
@@ -49,6 +61,41 @@ public class MercadologoController {
 		
 	}
 
+	public void clean() {
+		this.init();
+	}
+	
+	
+	public void findByName() {
+		try {
+			if (mercadologo.getNombreMercadologo().isEmpty()) {
+				this.listMercadologo();
+			} else {
+				listaMercadologo = this.mService.findByNameMercadologo(this.getMercadologo());
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+	
+	// modificar
+	public void modificar() {
+		try {
+			mService.modificar(this.mercadologo);
+			this.listMercadologo();
+
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
+
+	public String Modifpre(Mercadologo mer) {
+		this.setMercadologo(mer);
+		return "MercadologoMod.xhtml";
+
+	}
+	
+	
 	//GET Y SET
 	public List<Mercadologo> getListaMercadologo() {
 		return listaMercadologo;

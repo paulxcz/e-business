@@ -3,10 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-
-
-<ui:composition template="master.xhtml">
+	xmlns:p="http://primefaces.org/ui"> <ui:composition
+	template="master.xhtml">
 
 
 	<ui:define name="title">
@@ -20,55 +18,65 @@
 	<ui:define name="content">
 
 		<h:form>
-			<div class="row">
-				<p:commandButton value="Nuevo"
-					action="#{mercadologoController.newMercadologo()}"
-					styleClass="btn btn-primary" ajax="false" />
-			</div>
+			<div class="row"> <div class="col-sm-4"> <div
+				class="form-group"> <h:outputLabel for="name" value="Búsqueda"
+				styleClass="control-label" /> <p:inputText autocomplete="off"
+				id="name" styleClass="form-control"
+				value="#{mercadologoController.mercadologo.nombreMercadologo}"
+				maxlength="45" /> </div> </div> <div class="col-sm-8 text-right"> <p:commandButton
+				value="Limpiar" update="lstMercadologo"
+				actionListener="#{mercadologoController.clean()}"
+				styleClass="btn btn-default" ajax="false" /> <p:commandButton
+				value="Nuevo" action="#{mercadologoController.newMercadologo()}"
+				styleClass="btn btn-primary" ajax="false" /> <p:commandButton
+				value="Buscar" update="lstMercadologo"
+				actionListener="#{mercadologoController.findByName()}"
+				styleClass="btn btn-default btn-border" ajax="true" /> </div> </div>
+			<div class="row"> <div class="col-sm-12"> <div
+				class="form-group table-responsive box-table-class"> <p:dataTable
+				id="lstMercadologo" var="m"
+				value="#{mercadologoController.listaMercadologo}" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+				rows="10" styleClass="table table-bordered"
+				emptyMessage="No existen registros" rowIndexVar="item"
+				style="margin-bottom:0">
 
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="form-group table-responsive box-table-class">
+				<p:column headerText="Id" sortBy="#{m.idMercadologo}">
+					<h:outputText value="#{m.idMercadologo}" />
+				</p:column>
 
-						<p:dataTable id="lstMercadologo" var="m"
-							value="#{mercadologoController.listaMercadologo}"
-							paginator="true" paginatorPosition="top"
-							rowsPerPageTemplate="10,20,30,40,50" rows="10"
-							styleClass="table table-bordered"
-							emptyMessage="No existen registros" rowIndexVar="item"
-							style="margin-bottom:0">
+				<p:column headerText="Nombre" sortBy="#{m.nombreMercadologo}">
+					<h:outputText value="#{m.nombreMercadologo}" />
+				</p:column>
+				<p:column headerText="Numero" sortBy="#{m.numeroMercadologo}">
+					<h:outputText value="#{m.numeroMercadologo}" />
+				</p:column>
+				<p:column headerText="Rating" sortBy="#{m.ratingMercadologo}">
+					<h:outputText value="#{m.ratingMercadologo}" />
+				</p:column>
+				<p:column headerText="Correo Electronico"
+					sortBy="#{m.correoMercadologo}">
+					<h:outputText value="#{m.correoMercadologo}" />
+				</p:column>
+				<p:column headerText="linkedin" sortBy="#{m.linkedinMercadologo}">
+					<h:outputText value="#{m.linkedinMercadologo}" />
+				</p:column>
 
-							<p:column headerText="Id" sortBy="#{m.idMercadologo}">
-								<h:outputText value="#{m.idMercadologo}" />
-							</p:column>
+				<p:column headerText="Operación" exportable="false">
+					<h:commandLink action="listPowner" value="Eliminar"
+						actionListener="#{mercadologoController.eliminar(m)}" />
+				</p:column>
 
-							<p:column headerText="Nombre"
-								sortBy="#{m.nombreMercadologo}">
-								<h:outputText value="#{m.nombreMercadologo}" />
-							</p:column>
-							<p:column headerText="Rating"
-								sortBy="#{m.ratingMercadologo}">
-								<h:outputText value="#{m.ratingMercadologo}" />
-							</p:column>
-							<p:column headerText="Correo Electronico"
-								sortBy="#{m.correoMercadologo}">
-								<h:outputText value="#{m.correoMercadologo}" />
-							</p:column>
-							<p:column headerText="linkedin"
-								sortBy="#{m.linkedinMercadologo}">
-								<h:outputText value="#{m.linkedinMercadologo}" />
-							</p:column>
+				<p:column headerText="Operación" exportable="false">
 
-						</p:dataTable>
-					</div>
-
-				</div>
-			</div>
+					<h:commandLink value="Modificar"
+						action="#{mercadologoController.Modifpre(m)}" style="color:blue;" />
+				</p:column>
+			</p:dataTable> </div> </div> </div>
 		</h:form>
 	</ui:define>
 
 	<ui:define name="footerCont">
 
 	</ui:define>
-</ui:composition>
-</html>
+</ui:composition> </html>
