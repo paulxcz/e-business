@@ -54,4 +54,15 @@ public class ProyectoImpl implements IProyectoDao{
 		}
 		return lista;
 	}
+	@Transactional
+	@Override
+	public void eliminar(int idProyecto) {
+		Proyecto med = new Proyecto();
+		try {
+			med = em.getReference(Proyecto.class, idProyecto);
+			em.remove(med);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }

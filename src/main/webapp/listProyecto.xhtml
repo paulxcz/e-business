@@ -81,6 +81,11 @@
 							<p:column headerText="Estado" sortBy="#{p.estado}">
 								<h:outputText value="#{p.estado}" />
 							</p:column>
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink action="listPowner" value="Eliminar"
+									actionListener="#{proyectoController.eliminar(p)}" />
+							</p:column>
+							
 
 						</p:dataTable>
 					</div>

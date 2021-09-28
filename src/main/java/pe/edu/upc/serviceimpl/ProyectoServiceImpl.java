@@ -22,6 +22,11 @@ public class ProyectoServiceImpl implements IProyectoService{
 	}
 	
 	@Override
+	public void eliminar(int idProyecto) {
+		pDao.eliminar(idProyecto);
+	}
+	
+	@Override
 	public List<Proyecto> list(){
 		return pDao.list();
 	}

@@ -42,6 +42,14 @@ public class ProyectoController {
 			System.out.println(e.getMessage());
 		}
 	}
+	public void eliminar(Proyecto proyecto) {
+		try {
+			pService.eliminar(proyecto.getIdProyecto());
+			listProyecto();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
 	public void listProyecto() {
 		listaProyecto = pService.list();
 	}
