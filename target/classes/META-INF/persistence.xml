@@ -8,9 +8,13 @@
 		<jta-data-source>java:/PostgresDS</jta-data-source>
 		<class>pe.edu.upc.entities.Emprendedor</class>
 		<class>pe.edu.upc.entities.Mercadologo</class>
+		<class>pe.edu.upc.entities.Contrato</class>
+		<class>pe.edu.upc.entities.Soporte</class>
+		<class>pe.edu.upc.entities.Review</class>
+		<class>pe.edu.upc.entities.Proyecto</class>
 		<properties>
 			<property
-				name="javax.presistence.schema-generation.database.action"
+				name="javax.persistence.schema-generation.database.action"
 				value="create" />
 		</properties>
 	</persistence-unit>
