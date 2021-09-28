@@ -4,90 +4,91 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-
-
 <ui:composition template="master.xhtml">
 
 
 	<ui:define name="title">
-        .:Listado de Mercadologos:.
+        .:Listado de Proyecto:.
     </ui:define>
 
 	<ui:define name="titleCont">
-		<span>Mercadologos </span>
+		<span>Proyecto </span>
 	</ui:define>
 
 	<ui:define name="content">
 
 		<h:form>
-					<div class="row">
+
+<div class="row">
 				<div class="col-sm-4">
 					<div class="form-group">
 						<h:outputLabel for="name" value="Búsqueda"
 							styleClass="control-label" />
 						<p:inputText autocomplete="off" id="name"
 							styleClass="form-control"
-							value="#{mercadologoController.mercadologo.nombreMercadologo}"
-							maxlength="45" />
+							value="#{proyectoController.proyecto.nombre}"
+							maxlength="50" />
 					</div>
 				</div>
 				
 				<div class="col-sm-8 text-right">
-				<p:commandButton value="Limpiar" update="lstMercadologo"
-								actionListener="#{mercadologoController.clean()}"
+				<p:commandButton value="Limpiar" update="lstProyecto"
+								actionListener="#{proyectoController.clean()}"
 								styleClass="btn btn-default" ajax="false" />
 					<p:commandButton value="Nuevo"
-						action="#{mercadologoController.newMercadologo()}"
+						action="#{proyectoController.newProyecto()}"
 						styleClass="btn btn-primary" ajax="false" />
-					<p:commandButton value="Buscar" update="lstMercadologo"
-					actionListener="#{mercadologoController.findByName()}"
+					<p:commandButton value="Buscar" update="lstProyecto"
+					actionListener="#{proyectoController.findByName()}"
 					styleClass="btn btn-default btn-border" ajax="true" />
 				</div>
 			</div>	
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
-
-						<p:dataTable id="lstMercadologo" var="m"
-							value="#{mercadologoController.listaMercadologo}"
+						<p:dataTable id="lstProyecto" var="p"
+							value="#{proyectoController.listaProyecto}"
 							paginator="true" paginatorPosition="top"
 							rowsPerPageTemplate="10,20,30,40,50" rows="10"
 							styleClass="table table-bordered"
 							emptyMessage="No existen registros" rowIndexVar="item"
 							style="margin-bottom:0">
 
-							<p:column headerText="Id" sortBy="#{m.idMercadologo}">
-								<h:outputText value="#{m.idMercadologo}" />
+							<p:column headerText="Id" sortBy="#{p.idProyecto}">
+								<h:outputText value="#{p.idProyecto}" />
 							</p:column>
 
-							<p:column headerText="Nombre"
-								sortBy="#{m.nombreMercadologo}">
-								<h:outputText value="#{m.nombreMercadologo}" />
+							<p:column headerText="Nombre" sortBy="#{p.nombre}">
+								<h:outputText value="#{p.nombre}" />
 							</p:column>
-							<p:column headerText="Numero"
-								sortBy="#{m.numeroMercadologo}">
-								<h:outputText value="#{m.numeroMercadologo}" />
+							<p:column headerText="Anuncio"
+								sortBy="#{p.anuncio}">
+								<h:outputText value="#{p.anuncio}" />
 							</p:column>
-							<p:column headerText="Rating"
-								sortBy="#{m.ratingMercadologo}">
-								<h:outputText value="#{m.ratingMercadologo}" />
+							<p:column headerText="Emprendedor" sortBy="#{p.emprendedor}">
+								<h:outputText value="#{p.emprendedor}" />
 							</p:column>
-							<p:column headerText="Correo Electronico"
-								sortBy="#{m.correoMercadologo}">
-								<h:outputText value="#{m.correoMercadologo}" />
+							<p:column headerText="Fecha de Finalizacion"
+								sortBy="#{p.fechaFinalizacion}">
+								<h:outputText value="#{p.fechaFinalizacion}">
+									<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+								</h:outputText>
+			
 							</p:column>
-							<p:column headerText="linkedin"
-								sortBy="#{m.linkedinMercadologo}">
-								<h:outputText value="#{m.linkedinMercadologo}" />
+								<p:column headerText="Descripcion" sortBy="#{p.descripcion}">
+								<h:outputText value="#{p.descripcion}" />
 							</p:column>
-
+							<p:column headerText="Estado" sortBy="#{p.estado}">
+								<h:outputText value="#{p.estado}" />
+							</p:column>
 							<p:column headerText="Operación" exportable="false">
 								<h:commandLink action="listPowner" value="Eliminar"
-									actionListener="#{mercadologoController.eliminar(m)}" />
+									actionListener="#{proyectoController.eliminar(p)}" />
 							</p:column>
+							
+
 						</p:dataTable>
 					</div>
-
 				</div>
 			</div>
 		</h:form>

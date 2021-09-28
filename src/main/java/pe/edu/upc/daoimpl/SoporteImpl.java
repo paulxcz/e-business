@@ -18,11 +18,11 @@ public class SoporteImpl implements ISoporteDao {
 
 	@Transactional
 	@Override
-	public void insert(Soporte vc) {
+	public void insert(Soporte sp) {
 		// TODO Auto-generated method stub
 		try {
 
-			em.persist(vc);
+			em.persist(sp);
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -39,7 +39,7 @@ public class SoporteImpl implements ISoporteDao {
 
 		try {
 
-			Query q = em.createQuery("select v from Emprendedor v");
+			Query q = em.createQuery("select s from Soporte s");
 			lista = (List<Soporte>) q.getResultList();
 
 		} catch (Exception e) {
@@ -50,4 +50,35 @@ public class SoporteImpl implements ISoporteDao {
 
 		return lista;
 	}
+	
+	@Transactional
+	@Override
+	public void eliminar(int idSoporte) {
+		Soporte med = new Soporte();
+		try {
+			med = em.getReference(Soporte.class, idSoporte);
+			em.remove(med);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Soporte> findByNameSoporte(Soporte sop) {
+		List<Soporte> lista = new ArrayList<Soporte>();
+		try {
+			Query q = em.createQuery("from Soporte s where s.nombreSoporte like ?1");
+			q.setParameter(1, "%" + sop.getNombreSoporte() + "%");
+			lista = (List<Soporte>) q.getResultList();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return lista;
+	}
+	
+	
+	
+	
+	
 }

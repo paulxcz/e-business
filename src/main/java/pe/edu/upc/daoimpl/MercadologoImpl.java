@@ -46,23 +46,25 @@ public class MercadologoImpl implements IMercadologoDao {
 		return lista;
 	}
 	
-	
+	@Transactional
+	@Override
 	public void eliminar(int idMercadologo) {
-		Mercadologo med = new Mercadologo();
+		Mercadologo m = new Mercadologo();
 		try {
-			med = em.getReference(Mercadologo.class, idMercadologo);
-			em.remove(med);
+			m = em.getReference(Mercadologo.class, idMercadologo);
+			em.remove(m);
 		} catch (Exception e) {
+			// TODO: handle exception
 			System.out.println(e.getMessage());
 		}
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Mercadologo> finByNameMercadologo(Mercadologo mer) {
 		List<Mercadologo> lista = new ArrayList<Mercadologo>();
 		try {
-			Query q = em.createQuery("from Mercadologo m where m.nameMercadologo like ?1");
+			Query q = em.createQuery("from Mercadologo m where m.nombreMercadologo like ?1");
 			q.setParameter(1, "%" + mer.getNombreMercadologo() + "%");
 			lista = (List<Mercadologo>) q.getResultList();
 		} catch (Exception e) {
@@ -70,6 +72,4 @@ public class MercadologoImpl implements IMercadologoDao {
 		}
 		return lista;
 	}
-
-	
 }

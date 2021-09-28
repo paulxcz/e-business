@@ -44,6 +44,16 @@ public class SoporteController {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	
+	public void eliminar(Soporte soporte) {
+		try {
+			eService.eliminar(soporte.getIdSoporte());
+			list();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+	}
 
 
 	public void list() {
@@ -55,7 +65,7 @@ public class SoporteController {
 	}
 	
 	
-	/*public void findByName() {
+	public void findByName() {
 		try {
 			if (soporte.getNombreSoporte().isEmpty()) {
 				this.list();
@@ -66,7 +76,7 @@ public class SoporteController {
 		} catch (Exception e) {
 			e.getMessage();
 		}
-	}*/
+	}
 
 	// Getters and Setters
 	public Soporte getSoporte() {

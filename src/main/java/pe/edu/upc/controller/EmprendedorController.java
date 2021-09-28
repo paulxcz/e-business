@@ -1,5 +1,6 @@
 package pe.edu.upc.controller;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import pe.edu.upc.service.IEmprendedorService;
 @Named
 @RequestScoped
 public class EmprendedorController {
+	
+	//private static final long serialVersionUID = 1L;
 	// CDI
 	@Inject
 	private IEmprendedorService eService;
@@ -45,7 +48,6 @@ public class EmprendedorController {
 		}
 	}
 	
-	
 	public void eliminar(Emprendedor emprendedor) {
 		try {
 			eService.eliminar(emprendedor.getIdEmprendedor());
@@ -69,7 +71,6 @@ public class EmprendedorController {
 			if (emprendedor.getNombreEmprendedor().isEmpty()) {
 				this.list();
 			} else {
-
 				listaEmprendedores = this.eService.findByNameEmprendedor(this.getEmprendedor());
 			}
 		} catch (Exception e) {

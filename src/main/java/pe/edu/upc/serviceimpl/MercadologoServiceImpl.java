@@ -22,24 +22,18 @@ public class MercadologoServiceImpl implements IMercadologoService{
 		vDao.insert(vc);
 
 	}
-	
-	@Override
 	public void eliminar(int idMercadologo) {
 		vDao.eliminar(idMercadologo);
 	}
-	
 	@Override
 	public List<Mercadologo> list() {
 		// TODO Auto-generated method stub
 		return vDao.list();
 	}
 	
-	
 	@Override
 	public List<Mercadologo> findByNameMercadologo(Mercadologo mer) {
 		// TODO Auto-generated method stub
 		return vDao.finByNameMercadologo(mer);
-	
 	}
-
 }

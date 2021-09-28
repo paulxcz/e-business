@@ -18,36 +18,56 @@
 	<ui:define name="content">	
 
 		<h:form>
-			<div class="row"> <p:commandButton value="Nuevo"
-				action="#{soporteController.newSoporte()}"
-				styleClass="btn btn-primary" ajax="false" /> </div>
-
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<h:outputLabel for="name" value="Búsqueda"
+							styleClass="control-label" />
+						<p:inputText autocomplete="off" id="name"
+							styleClass="form-control"
+							value="#{soporteController.soporte.nombreSoporte}"
+							maxlength="50" />
+					</div>
+				</div>
+				
+				<div class="col-sm-8 text-right">
+				<p:commandButton value="Limpiar" update="lstSoporte"
+								actionListener="#{soporteController.clean()}"
+								styleClass="btn btn-default" ajax="false" />
+					<p:commandButton value="Nuevo"
+						action="#{soporteController.newSoporte()}"
+						styleClass="btn btn-primary" ajax="false" />
+					<p:commandButton value="Buscar" update="lstSoporte"
+					actionListener="#{soporteController.findByName()}"
+					styleClass="btn btn-default btn-border" ajax="true" />
+				</div>
+			</div>	
 			<div class="row"> <div class="col-sm-12"> <div
 				class="form-group table-responsive box-table-class"> <p:dataTable
-				id="lstSoporte" var="e"
-				value="#{SoporteController.listaSoportes}" paginator="true"
+				id="lstSoporte" var="s"
+				value="#{soporteController.listaSoportes}" paginator="true"
 				paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 				rows="10" styleClass="table table-bordered"
 				emptyMessage="No existen registros" rowIndexVar="item"
 				style="margin-bottom:0">
 
-				<p:column headerText="Id" sortBy="#{e.idSoporte}">
-					<h:outputText value="#{e.idSoporte}" />
+				<p:column headerText="Id" sortBy="#{s.idSoporte}">
+					<h:outputText value="#{s.idSoporte}" />
 				</p:column>
 				
 				
-				<p:column headerText="Nombre" sortBy="#{e.nombreSoporte}">
-					<h:outputText value="#{e.nombreSoporte}" />
+				<p:column headerText="Nombre" sortBy="#{s.nombreSoporte}">
+					<h:outputText value="#{s.nombreSoporte}" />
 				</p:column>
 
-				<p:column headerText="Problema" sortBy="#{e.descripcionProblema}">
-					<h:outputText value="#{e.descripcionProblema}" />
+				<p:column headerText="Problema" sortBy="#{s.descripcionProblema}">
+					<h:outputText value="#{s.descripcionProblema}" />
 				</p:column>
 				
 				
 				<p:column headerText="Operación" exportable="false">
 					<h:commandLink action="listPowner" value="Eliminar"
-						actionListener="#{soporteController.eliminar(e)}" />
+						actionListener="#{soporteController.eliminar(s)}" />
 				</p:column>
 
 			</p:dataTable> </div> </div> </div>

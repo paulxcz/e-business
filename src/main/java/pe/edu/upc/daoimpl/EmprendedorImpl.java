@@ -68,7 +68,7 @@ public class EmprendedorImpl implements IEmprendedorDao {
 	public List<Emprendedor> findByNameEmprendedor(Emprendedor emp) {
 		List<Emprendedor> lista = new ArrayList<Emprendedor>();
 		try {
-			Query q = em.createQuery("from Emprendedor e where e.nameEmprendedor like ?1");
+			Query q = em.createQuery("from Emprendedor v where v.nombreEmprendedor like ?1");
 			q.setParameter(1, "%" + emp.getNombreEmprendedor() + "%");
 			lista = (List<Emprendedor>) q.getResultList();
 		} catch (Exception e) {
