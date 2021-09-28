@@ -14,7 +14,7 @@ import pe.edu.upc.dao.IMercardologoDao;
 
 public class MercadologoDaoImpl implements IMercardologoDao {
 
-	@PersistenceContext(unitName = "e-Business")
+	@PersistenceContext(unitName = "e-business")
 	private EntityManager em;
 	
 	@Transactional
