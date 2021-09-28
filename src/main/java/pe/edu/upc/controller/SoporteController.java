@@ -77,6 +77,22 @@ public class SoporteController {
 			e.getMessage();
 		}
 	}
+	
+	// modificar
+    public void modificar() {
+        try {
+            eService.modificar(this.soporte);
+            this.list();
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
+    public String Modifpre(Soporte sop) {
+        this.setSoporte(sop);
+        return "SoporteMod.xhtml";
+    }
 
 	// Getters and Setters
 	public Soporte getSoporte() {

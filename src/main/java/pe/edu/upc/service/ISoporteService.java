@@ -10,6 +10,8 @@ public interface ISoporteService {
 	public void insert(Soporte sp);
 	
 	public void eliminar(int idSoporte);
+	
+	public void modificar(Soporte soporte);
 
 	public List<Soporte> list();
 	

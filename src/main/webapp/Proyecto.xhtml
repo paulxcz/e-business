@@ -37,13 +37,16 @@
 				value="#{proyectoController.proyecto.anuncio}"
 				maxlength="160" required="true" />
 			<br />
-			<h:outputLabel for="Emprendedor" value="Emprendedor"
-				styleClass="control-label" />
-			<p:inputText autocomplete="off" id="Emprendedor"
-				styleClass="form-control"
+			
+			<p:outputLabel for="Emprendedor" value="Emprendedor" />
+			<p:selectOneMenu id="Emprendedor"
 				value="#{proyectoController.proyecto.emprendedor}"
-				maxlength="60" required="true" />
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{proyectoController.listEmprendedores}"
+					var="e" itemLabel="#{e.nombreEmprendedor}" itemValue="#{e}" />
+			</p:selectOneMenu>
 			<br />
+			
 			<h:outputLabel for="Fecha" value="Fecha "
 				styleClass="control-label" />
 				

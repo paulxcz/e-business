@@ -65,8 +65,8 @@
 								sortBy="#{p.anuncio}">
 								<h:outputText value="#{p.anuncio}" />
 							</p:column>
-							<p:column headerText="Emprendedor" sortBy="#{p.emprendedor}">
-								<h:outputText value="#{p.emprendedor}" />
+							<p:column headerText="Emprendedor" sortBy="#{p.emprendedor.nombreEmprendedor}">
+								<h:outputText value="#{p.emprendedor.nombreEmprendedor}" />
 							</p:column>
 							<p:column headerText="Fecha de Finalizacion"
 								sortBy="#{p.fechaFinalizacion}">

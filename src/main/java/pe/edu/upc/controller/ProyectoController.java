@@ -9,7 +9,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import pe.edu.upc.entities.Emprendedor;
 import pe.edu.upc.entities.Proyecto;
+import pe.edu.upc.service.IEmprendedorService;
 import pe.edu.upc.service.IProyectoService;
 
 @Named
@@ -18,15 +20,23 @@ public class ProyectoController {
 	
 	@Inject
 	private IProyectoService pService;
+	@Inject
+	private IEmprendedorService eService;
 	
 	private Proyecto proyecto;
 	List<Proyecto> listaProyecto;
+	
+	private Emprendedor emprendedor;
+	List<Emprendedor> listEmprendedores;
 	
 	@PostConstruct
 	public void init() {
 		this.listaProyecto = new ArrayList<Proyecto>();
 		this.proyecto = new Proyecto();
+		this.listEmprendedores = new ArrayList<Emprendedor>();
+		this.emprendedor = new Emprendedor();
 		this.listProyecto();
+		this.listarEmprendedores();
 	}
 	
 	public String newProyecto() {
@@ -52,6 +62,13 @@ public class ProyectoController {
 	}
 	public void listProyecto() {
 		listaProyecto = pService.list();
+	}
+	public void listarEmprendedores() {
+		try {
+			listEmprendedores = eService.list();
+		}catch(Exception e) {
+			e.getMessage();
+		}
 	}
 	public void clean() {
 		this.init();
@@ -90,6 +107,30 @@ public class ProyectoController {
 
 	public void setListaProyecto(List<Proyecto> listaProyecto) {
 		this.listaProyecto = listaProyecto;
+	}
+
+	public IEmprendedorService geteService() {
+		return eService;
+	}
+
+	public void seteService(IEmprendedorService eService) {
+		this.eService = eService;
+	}
+
+	public Emprendedor getEmprendedor() {
+		return emprendedor;
+	}
+
+	public void setEmprendedor(Emprendedor emprendedor) {
+		this.emprendedor = emprendedor;
+	}
+
+	public List<Emprendedor> getListEmprendedores() {
+		return listEmprendedores;
+	}
+
+	public void setListEmprendedores(List<Emprendedor> listEmprendedores) {
+		this.listEmprendedores = listEmprendedores;
 	}
 	
 	
