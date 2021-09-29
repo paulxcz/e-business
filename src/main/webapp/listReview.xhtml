@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="master.xhtml">
+
+
+	<ui:define name="title">
+        .:Listado de Reviews:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Reviews </span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h:form>
+
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group">
+						<h:outputLabel for="name" value="Búsqueda"
+							styleClass="control-label" />
+						<p:inputText autocomplete="off" id="Id"
+							styleClass="form-control"
+							value="#{reviewController.review.idReview}"
+							maxlength="50" />
+					</div>
+				</div>
+				
+				<div class="col-sm-8 text-right">
+				<p:commandButton value="Limpiar" update="lstReview"
+								actionListener="#{reviewController.clean()}"
+								styleClass="btn btn-default" ajax="false" />
+					<p:commandButton value="Nuevo"
+						action="#{reviewController.nuevoReview()}"
+						styleClass="btn btn-primary" ajax="false" />
+					<p:commandButton value="Buscar" update="lstReview"
+					actionListener="#{reviewController.findByName()}"
+					styleClass="btn btn-default btn-border" ajax="true" />
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstReview" var="rev"
+							value="#{reviewController.listaReviews}"
+							paginator="true" paginatorPosition="top"
+							rowsPerPageTemplate="10,20,30,40,50" rows="10"
+							styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="Id" sortBy="#{rev.idReview}">
+								<h:outputText value="#{rev.idReview}" />
+							</p:column>
+
+							<p:column headerText="Calificacion" sortBy="#{rev.calificacion}">
+								<h:outputText value="#{rev.calificacion}" />
+							</p:column>
+							<p:column headerText="Detalle"
+								sortBy="#{rev.detalleReview}">
+								<h:outputText value="#{rev.detalleReview}" />
+							</p:column>
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink action="listPowner" value="Eliminar"
+									actionListener="#{reviewController.eliminar(rev)}" />
+							</p:column>
+
+						</p:dataTable>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -13,7 +13,6 @@ import pe.edu.upc.service.IEmprendedorService;
 @Named
 @RequestScoped
 public class EmprendedorServiceImpl implements IEmprendedorService{
-	
 	@Inject
 	private IEmprendedorDao vDao;
 	
@@ -24,11 +23,27 @@ public class EmprendedorServiceImpl implements IEmprendedorService{
 
 	}
 	
+	
+	@Override
+	public void eliminar(int idEmprendedor) {
+		vDao.eliminar(idEmprendedor);
+	}
+	
 	@Override
 	public List<Emprendedor> list() {
 		// TODO Auto-generated method stub
 		return vDao.list();
 	}
-
+	
+	@Override
+	public List<Emprendedor> findByNameEmprendedor(Emprendedor emp) {
+		// TODO Auto-generated method stub
+		return vDao.findByNameEmprendedor(emp);
+	}
+	
+	@Override
+    public void modificar(Emprendedor emprendedor) {
+        vDao.modificar(emprendedor);
+    }
 
 }
