@@ -76,5 +76,15 @@ public class EmprendedorImpl implements IEmprendedorDao {
 		}
 		return lista;
 	}
+	
+	@Transactional
+    @Override
+    public void modificar(Emprendedor emprendedor) {
+        try {
+            em.merge(emprendedor);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
 }

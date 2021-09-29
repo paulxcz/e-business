@@ -85,6 +85,10 @@
 								<h:commandLink action="listPowner" value="Eliminar"
 									actionListener="#{mercadologoController.eliminar(m)}" />
 							</p:column>
+							<p:column headerText="Operación" exportable="false">
+                   			 	<h:commandLink value="Modificar"
+                       				 action="#{mercadologoController.Modifpre(m)}" style="color:blue;" />
+                			</p:column>
 						</p:dataTable>
 					</div>
 

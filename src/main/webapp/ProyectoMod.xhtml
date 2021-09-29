@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Proyecto:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Proyecto</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idProyecto" value="Id " styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idProyecto"
+				styleClass="form-control"
+				value="#{proyectoController.proyecto.idProyecto}" required="true" />
+			<h:outputLabel for="nombreProyecto" value="Nombre del Proyecto "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="nombreProyecto"
+				styleClass="form-control"
+				value="#{proyectoController.proyecto.nombre}" maxlength="30"
+				required="true" />
+			<br />
+
+			<h:outputLabel for="Anuncio"
+				value="Anuncio " styleClass="control-label" />
+			<p:inputText autocomplete="off" id="Anuncio"
+				styleClass="form-control"
+				value="#{proyectoController.proyecto.anuncio}"
+				maxlength="30" required="true" />
+			<p:outputLabel for="Emprendedor" value="Emprendedor" />
+			<p:selectOneMenu id="Emprendedor"
+				value="#{proyectoController.proyecto.emprendedor}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{proyectoController.listEmprendedores}"
+					var="e" itemLabel="#{e.nombreEmprendedor}" itemValue="#{e}" />
+			</p:selectOneMenu>
+			<br />
+			
+			<h:outputLabel for="Fecha" value="Fecha "
+				styleClass="control-label" />
+				
+			<p:calendar id="Fecha" pattern="dd/MM/yyyy"
+				value="#{proyectoController.proyecto.fechaFinalizacion}"
+				showOn="button" timeZone="UTC" required="true">
+			</p:calendar>
+			<br />	
+			<h:outputLabel for="Descripcion" value="descripcion "
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="descripcion"
+				styleClass="form-control"
+				value="#{proyectoController.proyecto.descripcion}"
+				maxlength="160" required="true" />
+					
+			<h:outputLabel for="Estado" value="estado "
+				styleClass="control-label" />
+				
+			<p:inputText autocomplete="off" id="estado"
+				styleClass="form-control"
+				value="#{proyectoController.proyecto.estado}"
+				maxlength="60" required="true" />
+				
+			<br />
+			<br />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{proyectoController.modificar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listProyecto?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listProyecto?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>

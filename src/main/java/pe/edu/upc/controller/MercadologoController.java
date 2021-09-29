@@ -77,6 +77,23 @@ public class MercadologoController {
 			e.getMessage();
 		}
 	}
+	
+	// modificar
+    public void modificar() {
+        try {
+            mService.modificar(this.mercadologo);
+            this.listMercadologo();
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
+    public String Modifpre(Mercadologo mer) {
+        this.setMercadologo(mer);
+        return "MercadologoMod.xhtml";
+
+    }
 	//GET Y SET
 	public List<Mercadologo> getListaMercadologo() {
 		return listaMercadologo;
@@ -93,5 +110,6 @@ public class MercadologoController {
 	public void setMercadologo(Mercadologo mercadologo) {
 		this.mercadologo = mercadologo;
 	}	
+	
 	
 }

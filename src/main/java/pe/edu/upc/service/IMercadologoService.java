@@ -9,4 +9,5 @@ public interface IMercadologoService {
 	public void eliminar(int idMercadologo);
 	public List<Mercadologo> list();
 	public List<Mercadologo> findByNameMercadologo(Mercadologo mer);
+	public void modificar(Mercadologo mercadologo);
 }
