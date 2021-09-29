@@ -72,4 +72,14 @@ public class MercadologoImpl implements IMercadologoDao {
 		}
 		return lista;
 	}
+	
+	@Transactional
+    @Override
+    public void modificar(Mercadologo mercadologo) {
+        try {
+            em.merge(mercadologo);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

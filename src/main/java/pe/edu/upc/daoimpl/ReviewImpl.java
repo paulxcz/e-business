@@ -59,8 +59,8 @@ public class ReviewImpl implements IReviewDao {
 	public List<Review> findByNameReview(Review rev) {
 		List<Review> lista = new ArrayList<Review>();
 		try {
-			Query q = em.createQuery("from Review r where r.idReview like ?1");
-			q.setParameter(1, "%" + String.valueOf(rev.getIdReview()) + "%");
+			Query q = em.createQuery("from Review r where r.idReview = ?1");
+			q.setParameter(1, (int)rev.getIdReview());
 			lista = (List<Review>) q.getResultList();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

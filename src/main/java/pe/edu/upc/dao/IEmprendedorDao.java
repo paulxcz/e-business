@@ -12,6 +12,8 @@ public interface IEmprendedorDao {
 	public List<Emprendedor> list();
 	
 	public void eliminar(int idEmprendedor);
-
+	
+	public void modificar(Emprendedor emprendedor);
+	
 	public List<Emprendedor> findByNameEmprendedor(Emprendedor emp);
 }

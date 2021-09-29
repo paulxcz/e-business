@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,8 +23,13 @@ public class Proyecto {
 	private String nombre;
 	@Column(name="anuncio", length = 160, nullable = false)
 	private String anuncio;
-	@Column(name="emprendedor", length = 60, nullable = false)
-	private String emprendedor;
+	
+	@ManyToOne
+	@JoinColumn(name="idEmprendedor", nullable = false)
+	private Emprendedor emprendedor;
+	
+	/*@Column(name="emprendedor", length = 60, nullable = false)
+	private String emprendedor;*/
 
 	@Column(name="descripcion", length = 160, nullable = false)
 	private String descripcion;
@@ -34,7 +41,7 @@ public class Proyecto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Proyecto(int idProyecto, String nombre, String anuncio, String emprendedor,Date fechaFinalizacion, String descripcion,
+	public Proyecto(int idProyecto, String nombre, String anuncio, Emprendedor emprendedor,Date fechaFinalizacion, String descripcion,
 			String estado) {
 		super();
 		this.idProyecto = idProyecto;
@@ -63,15 +70,22 @@ public class Proyecto {
 	public void setAnuncio(String anuncio) {
 		this.anuncio = anuncio;
 	}
-	public String getEmprendedor() {
+	/*public String getEmprendedor() {
 		return emprendedor;
 	}
 	public void setEmprendedor(String emprendedor) {
 		this.emprendedor = emprendedor;
 	}
-
+	*/
+	
 	public Date getFechaFinalizacion() {
 		return fechaFinalizacion;
+	}
+	public Emprendedor getEmprendedor() {
+		return emprendedor;
+	}
+	public void setEmprendedor(Emprendedor emprendedor) {
+		this.emprendedor = emprendedor;
 	}
 	public void setFechaFinalizacion(Date fechaFinalizacion) {
 		this.fechaFinalizacion = fechaFinalizacion;

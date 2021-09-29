@@ -16,28 +16,26 @@
 
 	<ui:define name="content">
 		<h:form>
-			<h:outputLabel for="idProyecto" value="Id "
-				styleClass="control-label" />
+			<h:outputLabel for="idProyecto" value="Id " styleClass="control-label" />
 
 			<p:inputText autocomplete="off" id="idProyecto"
 				styleClass="form-control"
 				value="#{proyectoController.proyecto.idProyecto}" required="true" />
+			<h:outputLabel for="nombreProyecto" value="Nombre del Proyecto "
+				styleClass="control-label" />
 
-			<h:outputLabel for="Nombre" value="Nombre"
-				styleClass="control-label" />
-			<p:inputText autocomplete="off" id="Nombre"
+			<p:inputText autocomplete="off" id="nombreProyecto"
 				styleClass="form-control"
-				value="#{proyectoController.proyecto.nombre}"
-				maxlength="60" required="true" />
+				value="#{proyectoController.proyecto.nombre}" maxlength="30"
+				required="true" />
 			<br />
-			<h:outputLabel for="Anuncio" value="Anuncio"
-				styleClass="control-label" />
+
+			<h:outputLabel for="Anuncio"
+				value="Anuncio " styleClass="control-label" />
 			<p:inputText autocomplete="off" id="Anuncio"
 				styleClass="form-control"
 				value="#{proyectoController.proyecto.anuncio}"
-				maxlength="160" required="true" />
-			<br />
-			
+				maxlength="30" required="true" />
 			<p:outputLabel for="Emprendedor" value="Emprendedor" />
 			<p:selectOneMenu id="Emprendedor"
 				value="#{proyectoController.proyecto.emprendedor}"
@@ -72,8 +70,10 @@
 				maxlength="60" required="true" />
 				
 			<br />
+			<br />
+
 			<p:commandButton value="Grabar"
-				actionListener="#{proyectoController.insertProyecto()}"
+				actionListener="#{proyectoController.modificar()}"
 				styleClass="btn btn-primary " update="@form"
 				action="listProyecto?faces-redirect=true" />
 			<p:commandButton value="Cancelar"

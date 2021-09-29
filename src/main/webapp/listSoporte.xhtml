@@ -70,6 +70,10 @@
 						actionListener="#{soporteController.eliminar(s)}" />
 				</p:column>
 
+				<p:column headerText="Operación" exportable="false">
+                    <h:commandLink value="Modificar"
+                        action="#{soporteController.Modifpre(s)}" style="color:blue;" />
+                </p:column>
 			</p:dataTable> </div> </div> </div>
 		</h:form>
 	</ui:define>

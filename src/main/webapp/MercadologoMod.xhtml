@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Mercadologos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Mercadologo</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idMercadologo" value="Id "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idMercadologo"
+				styleClass="form-control"
+				value="#{mercadologoController.mercadologo.idMercadologo}" required="true" />
+			<h:outputLabel for="fullNameMercadologo" value="Nombre Mercadologo "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="fullNameMercadologo"
+				styleClass="form-control"
+				value="#{mercadologoController.mercadologo.nombreMercadologo}"
+				maxlength="30" required="true" />
+			
+		
+
+			<h:outputLabel for="numeroMercadologo" value="Numero de Mercadologo "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="numeroMercadologo"
+				styleClass="form-control"
+				value="#{mercadologoController.mercadologo.numeroMercadologo}"
+				maxlength="30" required="true" />
+			
+			<h:outputLabel for="ratingMercadologo" value="Rating del Mercadologo"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="ratingMercadologo"
+				styleClass="form-control"
+				value="#{mercadologoController.mercadologo.ratingMercadologo}" maxlength="30"
+				required="true" />
+				
+				
+				<h:outputLabel for="correoMercadologo" value="Correo del Mercadologo"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="correoMercadologo"
+				styleClass="form-control"
+				value="#{mercadologoController.mercadologo.correoMercadologo}" maxlength="30"
+				required="true" />
+				
+				<h:outputLabel for="linkedingMercadologo" value="Linkedin del Mercadologo"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="linkedingMercadologo"
+				styleClass="form-control"
+				value="#{mercadologoController.mercadologo.linkedinMercadologo}" maxlength="30"
+				required="true" />
+				
+				
+			<br />
+			
+			
+		
+
+			<p:commandButton value="Grabar"
+				actionListener="#{mercadologoController.modificar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listMercadologo?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listMercadologo?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>

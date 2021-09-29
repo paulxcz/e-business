@@ -40,5 +40,10 @@ public class EmprendedorServiceImpl implements IEmprendedorService{
 		// TODO Auto-generated method stub
 		return vDao.findByNameEmprendedor(emp);
 	}
+	
+	@Override
+    public void modificar(Emprendedor emprendedor) {
+        vDao.modificar(emprendedor);
+    }
 
 }

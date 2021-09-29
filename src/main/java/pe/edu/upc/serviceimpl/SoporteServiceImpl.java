@@ -40,4 +40,9 @@ public class SoporteServiceImpl implements ISoporteService{
 		// TODO Auto-generated method stub
 		return vDao.findByNameSoporte(sop);
 	}
+	
+	@Override
+    public void modificar(Soporte soporte) {
+        vDao.modificar(soporte);
+    } 
 }

@@ -65,4 +65,13 @@ public class ProyectoImpl implements IProyectoDao{
 			System.out.println(e.getMessage());
 		}
 	}
+	@Transactional
+    @Override
+    public void modificar(Proyecto proyecto) {
+        try {
+            em.merge(proyecto);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

@@ -77,8 +77,14 @@ public class SoporteImpl implements ISoporteDao {
 		return lista;
 	}
 	
-	
-	
-	
-	
+	@Transactional
+    @Override
+    public void modificar(Soporte soporte) {
+        try {
+            em.merge(soporte);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

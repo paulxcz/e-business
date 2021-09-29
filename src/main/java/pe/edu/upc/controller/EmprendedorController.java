@@ -78,6 +78,22 @@ public class EmprendedorController {
 		}
 	}
 
+	// modificar
+    public void modificar() {
+        try {
+            eService.modificar(this.emprendedor);
+            this.list();
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
+    public String Modifpre(Emprendedor emp) {
+        this.setEmprendedor(emp);
+        return "EmprendedorMod.xhtml";
+
+    }
 	// Getters and Setters
 	public Emprendedor getEmprendedor() {
 		return emprendedor;

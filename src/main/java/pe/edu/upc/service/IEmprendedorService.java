@@ -9,6 +9,8 @@ public interface IEmprendedorService {
 	public void insert(Emprendedor vc);
 	
 	public void eliminar(int idEmprendedor);
+	
+	public void modificar(Emprendedor emprendedor);
 
 	public List<Emprendedor> list();
 	
