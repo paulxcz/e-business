@@ -71,6 +71,10 @@
 									actionListener="#{emprendedorController.eliminar(e)}" />
 							</p:column>
 
+							<p:column headerText="Operación" exportable="false">
+                    			<h:commandLink value="Modificar"
+                       				 action="#{emprendedorController.Modifpre(e)}" style="color:blue;" />
+               				 </p:column>
 						</p:dataTable>
 					</div>
 				</div>

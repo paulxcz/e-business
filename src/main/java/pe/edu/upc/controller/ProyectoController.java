@@ -85,6 +85,22 @@ public class ProyectoController {
 			e.getMessage();
 		}
 	}
+	// modificar
+    public void modificar() {
+        try {
+            pService.modificar(this.proyecto);
+            this.listProyecto();
+
+        } catch (Exception e) {
+            e.getMessage();
+        }
+    }
+
+    public String Modifpre(Proyecto pro) {
+        this.setProyecto(pro);
+        return "ProyectoMod.xhtml";
+
+    }
 	public IProyectoService getpService() {
 		return pService;
 	}

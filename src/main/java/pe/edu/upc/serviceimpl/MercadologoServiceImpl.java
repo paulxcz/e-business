@@ -36,4 +36,8 @@ public class MercadologoServiceImpl implements IMercadologoService{
 		// TODO Auto-generated method stub
 		return vDao.finByNameMercadologo(mer);
 	}
+	@Override
+    public void modificar(Mercadologo mercadologo) {
+        vDao.modificar(mercadologo);
+    }
 }

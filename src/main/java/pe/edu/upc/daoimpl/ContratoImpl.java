@@ -48,8 +48,8 @@ public class ContratoImpl implements IContratoDao {
 	public List<Contrato> findByNameContrato(Contrato con) {
 		List<Contrato> lista = new ArrayList<Contrato>();
 		try {
-			Query q = em.createQuery("from Contrato c where c.idContrato like ?1");
-			q.setParameter(1, con.getIdContrato());
+			Query q = em.createQuery("from Contrato c where c.idContrato = ?1");
+			q.setParameter(1, (int)con.getIdContrato());
 			lista = (List<Contrato>) q.getResultList();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

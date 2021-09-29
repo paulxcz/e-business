@@ -35,4 +35,8 @@ public class ProyectoServiceImpl implements IProyectoService{
 		// TODO Auto-generated method stub
 		return pDao.findByNameProyecto(pro);
 	}
+	@Override
+    public void modificar(Proyecto proyecto) {
+        pDao.modificar(proyecto);
+    } 
 }
